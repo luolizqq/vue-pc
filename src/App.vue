@@ -1,18 +1,37 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
+    <router-view></router-view>
+    <!-- <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
+   <Switch :before-change="handleBeforeChange" /> 
+     <Button>按钮</Button> 
+    <Progress /> -->
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+// import HelloWorld from './components/HelloWorld.vue'
+// import {Switch} from 'view-design';
 export default {
   name: 'app',
   components: {
-    HelloWorld
-  }
+    // HelloWorld,
+    // Switch
+    // Button
+  },
+  methods: {
+            handleBeforeChange () {
+                return new Promise((resolve) => {
+                    this.$Modal.confirm({
+                        title: '切换确认',
+                        content: '您确认要切换开关状态吗？',
+                        onOk: () => {
+                            resolve();
+                        }
+                    });
+                });
+            }
+        }
 }
 </script>
 
